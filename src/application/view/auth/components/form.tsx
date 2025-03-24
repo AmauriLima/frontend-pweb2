@@ -35,7 +35,7 @@ function FormHeader({ children}: IChildren) {
 
 function FormContainer({ children }: IChildren) {
   return (
-    <div className="w-full border-2 border-solid border-gray-500/10 rounded-2xl p-6 shadow-md">
+    <div className="w-full border-2 border-solid border-muted rounded-2xl p-6 shadow-md">
       {children}
     </div>
   )

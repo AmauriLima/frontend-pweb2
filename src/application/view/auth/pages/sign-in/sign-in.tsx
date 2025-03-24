@@ -1,24 +1,11 @@
 
-import { useSignIn } from "@/application/modules/auth/hooks/use-sign-in";
-import { SignInDTO, signInDTO } from "@/application/modules/auth/services/dto/account-dto";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/application/shared/components/ui/form";
 import { Input } from "@/application/shared/components/ui/input";
-import { zodResolver } from '@hookform/resolvers/zod';
-import { SubmitHandler, useForm } from "react-hook-form";
 import { FormContainer, FormHeader, FormSubtitle, FormTitle, FormWrapper } from '../../components/form';
-
+import { useSignInController } from "./sign-in-controller";
 
 export const SignInPage: React.FC = () => {
-  const { signIn } = useSignIn();
-  const form = useForm<SignInDTO>({
-    resolver: zodResolver(signInDTO)
-  });
-
-  const { formState: { isValid, isSubmitted } } = form;
-
-  const handleSubmit: SubmitHandler<SignInDTO> = async (dto) => {
-    signIn(dto);
-  }
+  const { form, handleSubmit, isSubmitted, isValid } = useSignInController();
 
   return (
     <FormContainer>
