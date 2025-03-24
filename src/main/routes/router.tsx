@@ -1,7 +1,12 @@
-
 import { AuthLayout } from '@/application/view/auth/pages/layout';
 import { SignInPage } from '@/application/view/auth/pages/sign-in/sign-in';
-import { DashboardLayout } from '@/application/view/dashboard/layout';
+import { CreateAccoutPage } from '@/application/view/dashboard/pages/accounts/create-account/create-account-page';
+import { ListAccoutsPage } from '@/application/view/dashboard/pages/accounts/list-accounts/list-accounts-page';
+import { CreateBookPage } from '@/application/view/dashboard/pages/books/create-book/create-book-page';
+import { ListBooksPage } from '@/application/view/dashboard/pages/books/list-books/list-books-page';
+import { DashboardLayout } from '@/application/view/dashboard/pages/layout';
+import { CreateLoanPage } from '@/application/view/dashboard/pages/loans/create-loan/create-loan-page';
+import { ListLoansPage } from '@/application/view/dashboard/pages/loans/list-loans/list-loans-page';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import { AuthRoute } from './auth-route';
 import { ProtectedRoute } from './protected-route';
@@ -21,18 +26,18 @@ export const Router: React.FC = () => {
 
         <Route path="dashboard" element={<DashboardLayout />} >
           <Route path="accounts" element={<ProtectedRoute />}>
-            <Route path="" element={<h1>Usuários</h1>} />
-            <Route path="create-account" element={<h1>Adicionar usuário</h1>} />
+            <Route path="" element={<ListAccoutsPage />} />
+            <Route path="create-account" element={<CreateAccoutPage />} />
           </Route>
 
           <Route path="books" element={<ProtectedRoute />}>
-            <Route path="" element={<h1>Livros</h1>} />
-            <Route path="create-book" element={<h1>Adicionar livro</h1>} />
+            <Route path="" element={<ListBooksPage />} />
+            <Route path="create-book" element={<CreateBookPage />} />
           </Route>
 
           <Route path="loans" element={<ProtectedRoute />}>
-            <Route path="" element={<h1>Empréstimos</h1>} />
-            <Route path="create-loan" element={<h1>Criar empréstimo</h1>} />
+            <Route path="" element={<ListLoansPage />} />
+            <Route path="create-loan" element={<CreateLoanPage />} />
           </Route>
         </Route>
       </Routes>

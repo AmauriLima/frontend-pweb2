@@ -3,7 +3,8 @@ import { Separator } from "@/application/shared/components/ui/separator";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/application/shared/components/ui/sidebar";
 import React, { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router";
-import { AppSidebar } from "./components/app-sidebar";
+
+import { AppSidebar } from "../components/app-sidebar";
 import { collapsibleItems } from "./layout-collapsible-items";
 import { routePath } from "./layout-route-path";
 

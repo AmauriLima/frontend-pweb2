@@ -1,5 +1,6 @@
-import { LucideBook, LucideUser2 } from "lucide-react";
-import { CollapsibleItem } from "./components/app-sidebar";
+import { LucideBookOpen, LucideLibraryBig, LucideUser2 } from "lucide-react";
+import { CollapsibleItem } from "../components/app-sidebar";
+
 
 export const collapsibleItems: CollapsibleItem[] = [
   {
@@ -21,7 +22,7 @@ export const collapsibleItems: CollapsibleItem[] = [
   {
     title: 'Livros',
     url: '/dashboard/books',
-    icon: LucideBook,
+    icon: LucideLibraryBig,
     isActive: true,
     items: [
       {
@@ -37,7 +38,7 @@ export const collapsibleItems: CollapsibleItem[] = [
   {
     title: 'Empréstimos',
     url: '/dashboard/loans',
-    icon: LucideUser2,
+    icon: LucideBookOpen,
     isActive: true,
     items: [
       {
