@@ -20,8 +20,12 @@ export class AuthService extends ApiService {
     return this.httpClient.post<SignInResponse>(`${this.baseUrl}/sign-in`, dto);
   }
 
-  logout() {
+  logout(props?: {shallRedirect?: boolean}) {
     localStorage.removeItem(this.accessTokenKey);
+
+    if (props?.shallRedirect && window.location.pathname !== '/auth/sign-in') {
+      window.location.href = '/auth/sign-in';
+    }
   }
 
   setToken({ accessToken }: SignInResponse) {

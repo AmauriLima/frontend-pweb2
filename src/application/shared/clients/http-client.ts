@@ -26,7 +26,7 @@ httpClient.interceptors.response.use(
   async (error) => {
     if (error.response?.status === 401) {
       const authService = makeAuthService();
-      authService.logout();
+      authService.logout({ shallRedirect: true });
     }
     return Promise.reject(error);
   }

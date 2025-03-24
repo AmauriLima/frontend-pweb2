@@ -1,3 +1,4 @@
+import { Roles } from '@/application/modules/account/services/dto/account-dto';
 import { AuthLayout } from '@/application/view/auth/pages/layout';
 import { SignInPage } from '@/application/view/auth/pages/sign-in/sign-in';
 import { CreateAccoutPage } from '@/application/view/dashboard/pages/accounts/create-account/create-account-page';
@@ -25,17 +26,17 @@ export const Router: React.FC = () => {
         </Route>
 
         <Route path="dashboard" element={<DashboardLayout />} >
-          <Route path="accounts" element={<ProtectedRoute />}>
+          <Route path="accounts" element={<ProtectedRoute rolesAllowed={[Roles.ADMIN, Roles.MANAGER, Roles.USER_MANAGER]} />}>
             <Route path="" element={<ListAccoutsPage />} />
             <Route path="create-account" element={<CreateAccoutPage />} />
           </Route>
 
-          <Route path="books" element={<ProtectedRoute />}>
+          <Route path="books" element={<ProtectedRoute rolesAllowed={[Roles.ADMIN, Roles.MANAGER, Roles.BOOK_MANAGER]} />}>
             <Route path="" element={<ListBooksPage />} />
             <Route path="create-book" element={<CreateBookPage />} />
           </Route>
 
-          <Route path="loans" element={<ProtectedRoute />}>
+          <Route path="loans" element={<ProtectedRoute rolesAllowed={[Roles.ADMIN, Roles.MANAGER, Roles.USER_MANAGER]} />}>
             <Route path="" element={<ListLoansPage />} />
             <Route path="create-loan" element={<CreateLoanPage />} />
           </Route>
