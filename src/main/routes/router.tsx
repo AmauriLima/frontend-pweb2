@@ -1,5 +1,6 @@
-import { AuthLayout } from '@/application/modules/auth/pages/layout';
-import { SignInPage } from '@/application/modules/auth/pages/sign-in/sign-in';
+
+import { AuthLayout } from '@/application/view/auth/pages/layout';
+import { SignInPage } from '@/application/view/auth/pages/sign-in/sign-in';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import { AuthRoute } from './auth-route';
 import { ProtectedRoute } from './protected-route';
