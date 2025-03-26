@@ -1,7 +1,7 @@
 
 import { useDeleteBook } from "@/application/modules/books/hooks/use-delete-book";
 import { useGetBooks } from "@/application/modules/books/hooks/use-get-books";
-import { useUpdateBook } from "@/application/modules/books/hooks/use-update-account";
+import { useUpdateBook } from "@/application/modules/books/hooks/use-update-book";
 import { UpdateBookDTO } from "@/application/modules/books/services/dto/book-dto";
 import { Table } from "@/application/shared/components/table";
 import { useTable } from "@/application/shared/contexts/table-context";
