@@ -1,21 +1,15 @@
 import { Table } from "@/application/shared/components/table";
-import { Button } from "@/application/shared/components/ui/button";
-import { LucideUserPlus2 } from "lucide-react";
-import { AccountsTable } from "./components/accounts-table";
+import { CreateAccountButton } from "./components/create-account-button";
+import { ListAccountsContent } from "./list-accounts-content";
 
 export const ListAccoutsPage: React.FC = () => {
   return (
     <Table.Wrapper
       title="Usuários"
       subtitle="Lista de todos os usuários cadastrados."
-      renderAddButton={() => (
-        <Button>
-          <LucideUserPlus2 />
-          Adicionar usuário
-        </Button>
-      )}
+      renderAddButton={() => <CreateAccountButton />}
     >
-      <AccountsTable />
+      <ListAccountsContent />
     </Table.Wrapper>
   );
 }

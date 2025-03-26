@@ -1,5 +1,7 @@
 import { makeAuthService } from '@/application/modules/auth/services/make-auth-service';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
+
+export type HttpAxiosError = AxiosError<{ messages: string[] }>;
 
 export const httpClient = axios.create({
   baseURL: import.meta.env.VITE_KEY_BASE_URL,

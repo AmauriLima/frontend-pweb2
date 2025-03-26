@@ -1,6 +1,10 @@
 import { useGetAccounts } from "@/application/modules/account/hooks/use-get-accounts";
 
+import { useDeleteAccount } from "@/application/modules/account/hooks/use-delete-account";
+import { useUpdateAccount } from "@/application/modules/account/hooks/use-update-account";
+import { UpdateAccountDTO } from "@/application/modules/account/services/dto/account-dto";
 import { Table } from "@/application/shared/components/table";
+import { useTable } from "@/application/shared/contexts/table-context";
 import {
   ColumnFiltersState,
   SortingState,
@@ -11,7 +15,8 @@ import {
   getSortedRowModel,
   useReactTable
 } from "@tanstack/react-table";
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import { AccountsForm } from "./accounts-form";
 import { columns } from "./accounts-table-columns";
 
 export function AccountsTable() {
@@ -39,8 +44,21 @@ export function AccountsTable() {
     },
   });
 
+  const { selectedId, setIsEditDialogOpen } = useTable();
+  const initialValues = useMemo(() => accounts.find((account) => account.id === selectedId), [accounts, selectedId]);
+
+  const { deleteAccount } = useDeleteAccount();
+
+  const { updateAccount } = useUpdateAccount();
+
+  async function handleUpdateAcount(dto: UpdateAccountDTO) {
+    await updateAccount({ dto, accountId: selectedId! });
+
+    setIsEditDialogOpen(false);
+  }
+
   return (
-    <div className="w-full">
+    <div>
       <Table.Toolkit
         table={table}
         filterKey="email"
@@ -57,6 +75,19 @@ export function AccountsTable() {
         placeholder="Nenhuma conta encontrada."
       />
       <Table.Footer pagination={pagination} />
+
+      <Table.DeleteDialog
+        title="Tem certeza que deseja excluir esse usuário?"
+        subtitle="Essa ação não poderá ser desfeita. Isso excluirá esse usuário permanentemente."
+        onConfirm={() => deleteAccount({ accountId: selectedId! })}
+      />
+
+      <Table.EditDialog
+        title="Editar usuário"
+        subtitle="Edite os dados cadastrais do usuário"
+      >
+        <AccountsForm onSubmit={handleUpdateAcount} submitLabel="Editar usuário" initialValues={initialValues} />
+      </Table.EditDialog>
     </div>
   )
 }
