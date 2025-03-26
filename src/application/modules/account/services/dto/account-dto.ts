@@ -16,3 +16,8 @@ export interface Account {
 }
 
 export type MeResponse = Account;
+
+export interface GetAccountsResponse {
+  data: Account[];
+  totalItems: number;
+}

@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { AxiosResponse } from "axios";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
+import { Roles } from "../../account/services/dto/account-dto";
 import { SignInDTO, SignInResponse } from "../services/dto/account-dto";
 import { makeAuthService } from "../services/make-auth-service";
 
@@ -15,7 +16,9 @@ export function useSignIn() {
       const { accessToken, role } = response.data;
       authService.setToken({accessToken, role});
 
-      navigate('/dashboard');
+      const entryRoute = role !== Roles.USER ? '/dashboard' : '/books';
+
+      navigate(entryRoute);
     },
     onError: () => toast.error('Credenciais inválidas')
   });

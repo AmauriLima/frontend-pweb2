@@ -1,6 +1,7 @@
 export const routePath: { [key: string]: { label: string, route?: string } } = {
   'dashboard': {
-    label: 'Dashboard'
+    label: 'Dashboard',
+    route: '/dashboard'
   },
   'accounts': {
     label: 'Usuários',

@@ -15,10 +15,12 @@ import {
   useSidebar
 } from "@/application/shared/components/ui/sidebar";
 
+import UfcgLogo from '@/application/assets/ufcg-logo.png';
 import { Roles } from "@/application/modules/account/services/dto/account-dto";
 import { ProtectedComponent } from "@/application/shared/components/protected-component";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/application/shared/components/ui/collapsible";
 import { Separator } from "@/application/shared/components/ui/separator";
+import { cn } from "@/application/shared/lib/utils";
 import { ChevronRight, LucideIcon } from "lucide-react";
 import { NavLink } from "react-router";
 import { NavUser } from "./nav-user";
@@ -45,8 +47,8 @@ export function AppSidebar({ collapsibleItems }: Props) {
   return (
     <Sidebar variant="sidebar" collapsible="icon">
       <SidebarHeader className="flex items-center py-4 justify-center flex-row"  >
-        G
-        {open && 'erenciamento'}
+        <img src={UfcgLogo} alt="" className={cn("size-10", !open && "size-6")} />
+        {open && 'Gerenciador de Biblioteca'}
       </SidebarHeader>
       <Separator />
 

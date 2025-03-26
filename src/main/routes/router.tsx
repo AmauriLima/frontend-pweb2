@@ -26,6 +26,8 @@ export const Router: React.FC = () => {
         </Route>
 
         <Route path="dashboard" element={<DashboardLayout />} >
+          <Route path="" element={<h1>Bem vindo ao sistema de gerenciamento</h1>} />
+
           <Route path="accounts" element={<ProtectedRoute rolesAllowed={[Roles.ADMIN, Roles.MANAGER, Roles.USER_MANAGER]} />}>
             <Route path="" element={<ListAccoutsPage />} />
             <Route path="create-account" element={<CreateAccoutPage />} />
