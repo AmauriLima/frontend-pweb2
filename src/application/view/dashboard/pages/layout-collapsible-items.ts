@@ -13,11 +13,7 @@ export const collapsibleItems: CollapsibleItem[] = [
       {
         title: 'Todos os usuários',
         url: '/dashboard/accounts'
-      },
-      {
-        title: 'Adicionar usuário',
-        url: '/dashboard/accounts/create-account'
-      },
+      }
     ]
   },
   {
@@ -30,11 +26,7 @@ export const collapsibleItems: CollapsibleItem[] = [
       {
         title: 'Todos os livros',
         url: '/dashboard/books'
-      },
-      {
-        title: 'Adicionar livro',
-        url: '/dashboard/books/create-book'
-      },
+      }
     ]
   },
   {
@@ -47,11 +39,7 @@ export const collapsibleItems: CollapsibleItem[] = [
       {
         title: 'Todos os empréstimos',
         url: '/dashboard/loans'
-      },
-      {
-        title: 'Criar empréstimo',
-        url: '/dashboard/loans/create-loan'
-      },
+      }
     ]
   }
 ];

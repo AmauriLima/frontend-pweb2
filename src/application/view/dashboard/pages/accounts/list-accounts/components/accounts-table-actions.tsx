@@ -3,6 +3,7 @@ import { Button } from "@/application/shared/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/application/shared/components/ui/dropdown-menu";
 import { useTable } from "@/application/shared/contexts/table-context";
 import { LucideBookOpen, LucideCopy, LucidePencil, LucideTrash2, MoreHorizontal } from "lucide-react";
+import { toast } from "sonner";
 
 interface Props {
   account: Account;
@@ -31,9 +32,12 @@ export const AccountsTableActions: React.FC<Props> = ({ account }) => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Açoes</DropdownMenuLabel>
+          <DropdownMenuLabel>Ações</DropdownMenuLabel>
           <DropdownMenuItem
-            onClick={() => navigator.clipboard.writeText(account.email)}
+            onClick={() => {
+              navigator.clipboard.writeText(account.email)
+              toast.success('E-mail copiado para área de transferência');
+            }}
           >
             <LucideCopy />
             Copiar e-mail

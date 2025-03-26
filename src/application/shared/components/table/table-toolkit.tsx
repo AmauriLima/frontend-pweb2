@@ -5,7 +5,7 @@ import { Table } from "@tanstack/react-table";
 import { LucideSettings2 } from "lucide-react";
 
 interface Props<T> {
-  mappedView: Partial<Record<keyof T, string>>;
+  mappedView: Partial<Record<keyof T, string>> & Record<string, string>;
   table: Table<T>;
   filterPlaceholder: string;
   filterKey: keyof T extends string ? keyof T : never;

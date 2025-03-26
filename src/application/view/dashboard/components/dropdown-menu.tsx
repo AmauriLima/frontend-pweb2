@@ -1,9 +1,7 @@
 import {
   ChevronsUpDown,
   Cloud,
-  LifeBuoy,
   LogOut,
-  Settings,
   User
 } from "lucide-react";
 
@@ -82,20 +80,14 @@ export function DropdownMenuSettings() {
             <User />
             <span>Perfil</span>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Settings />
-            <span>Configurações</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem asChild>
             <ThemeToggle />
           </DropdownMenuItem>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <LifeBuoy />
-          <span>Suporte</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem disabled>
+        <DropdownMenuItem onClick={() => {
+          window.open("http://localhost:3001/api-docs/#/", "_blank");
+        }}>
           <Cloud />
           <span>API</span>
         </DropdownMenuItem>
