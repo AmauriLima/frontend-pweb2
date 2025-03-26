@@ -1,6 +1,19 @@
 import { useCallback, useEffect, useState } from 'react';
 
-export function usePagination(perPage: number, initialPage = 1) {
+export interface IUsePagination {
+  currentPage: number;
+  totalPages: number;
+  hasPreviousPage: boolean;
+  hasNextPage: boolean;
+  setTotalItems: React.Dispatch<React.SetStateAction<number>>;
+  setPage: (page: number) => void;
+  previousPage: () => void;
+  nextPage: () => void;
+  firstPage: () => void;
+  lastPage: () => void;
+}
+
+export function usePagination(perPage: number, initialPage = 1): IUsePagination {
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(() => {
     const searchParams = new URLSearchParams(window.location.search);
