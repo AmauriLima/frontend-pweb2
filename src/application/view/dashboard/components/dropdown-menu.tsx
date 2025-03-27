@@ -1,4 +1,4 @@
-import { ChevronsUpDown, Cloud, LogOut, User } from "lucide-react";
+import { ChevronsUpDown, Cloud, LogOut } from "lucide-react";
 
 import { useMe } from "@/application/modules/account/hooks/use-me";
 import { makeAuthService } from "@/application/modules/auth/services/make-auth-service";
@@ -68,12 +68,7 @@ export function DropdownMenuSettings() {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
-        <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <User />
-            <span>Perfil</span>
-          </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
             <ThemeToggle />

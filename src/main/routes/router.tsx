@@ -29,7 +29,7 @@ export const Router: React.FC = () => {
             <Route path="" element={<ListAccoutsPage />} />
           </Route>
 
-          <Route path="books" element={<ProtectedRoute rolesAllowed={[Roles.ADMIN, Roles.MANAGER, Roles.BOOK_MANAGER]} />}>
+          <Route path="books" element={<ProtectedRoute rolesAllowed={[Roles.ADMIN, Roles.MANAGER, Roles.BOOK_MANAGER, Roles.USER_MANAGER]} />}>
             <Route path="" element={<ListBooksPage />} />
           </Route>
 

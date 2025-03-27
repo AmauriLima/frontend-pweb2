@@ -1,4 +1,6 @@
+import { Roles } from "@/application/modules/account/services/dto/account-dto";
 import { Book } from "@/application/modules/books/services/dto/book-dto";
+import { ProtectedComponent } from "@/application/shared/components/protected-component";
 import { Button } from "@/application/shared/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/application/shared/components/ui/dropdown-menu";
 import { useTable } from "@/application/shared/contexts/table-context";
@@ -41,15 +43,17 @@ export const BooksTableActions: React.FC<Props> = ({ book }) => {
             <LucideBookOpen />
             Emprestar
           </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem variant="default" onClick={handleEdit}>
-            <LucidePencil />
-            Editar
-          </DropdownMenuItem>
-          <DropdownMenuItem variant="destructive" onClick={handleDelete}>
-            <LucideTrash2 />
-            Remover
-          </DropdownMenuItem>
+          <ProtectedComponent rolesAllowed={[Roles.ADMIN, Roles.MANAGER, Roles.BOOK_MANAGER]}>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem variant="default" onClick={handleEdit}>
+              <LucidePencil />
+              Editar
+            </DropdownMenuItem>
+            <DropdownMenuItem variant="destructive" onClick={handleDelete}>
+              <LucideTrash2 />
+              Remover
+            </DropdownMenuItem>
+          </ProtectedComponent>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

@@ -21,7 +21,7 @@ export const collapsibleItems: CollapsibleItem[] = [
     url: '/dashboard/books',
     icon: LucideLibraryBig,
     isActive: true,
-    rolesAllowed: [Roles.ADMIN, Roles.MANAGER, Roles.BOOK_MANAGER],
+    rolesAllowed: [Roles.ADMIN, Roles.MANAGER, Roles.BOOK_MANAGER, Roles.USER_MANAGER],
     items: [
       {
         title: 'Todos os livros',
