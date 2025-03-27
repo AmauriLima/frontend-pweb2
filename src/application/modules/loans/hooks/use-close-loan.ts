@@ -18,6 +18,9 @@ export function useCloseLoan() {
       queryClient.invalidateQueries({
         queryKey: ['loans']
       });
+      queryClient.invalidateQueries({
+        queryKey: ['books']
+      });
     },
     onError: (error) => {
       toast.error(error.response?.data.messages);

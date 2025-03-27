@@ -2,11 +2,11 @@ import { z } from "zod";
 
 export interface Loan {
   id: string;
-  accountId: {
+  account: {
     id: string;
     name: string;
   };
-  bookId: {
+  book: {
     id: string;
     name: string;
   };

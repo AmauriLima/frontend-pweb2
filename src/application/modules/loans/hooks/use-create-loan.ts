@@ -17,6 +17,9 @@ export function useCreateLoan() {
       queryClient.invalidateQueries({
         queryKey: ['loans']
       });
+      queryClient.invalidateQueries({
+        queryKey: ['books']
+      });
     },
     onError: (err) => {
       const error = err as HttpAxiosError;

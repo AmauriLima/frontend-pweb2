@@ -5,7 +5,7 @@ interface Props {
   title: string;
   subtitle: string;
   children: React.ReactNode;
-  renderAddButton: () => React.ReactNode;
+  renderAddButton?: () => React.ReactNode;
 }
 
 export const TableWrapper: React.FC<Props> = (props) => {
@@ -13,14 +13,14 @@ export const TableWrapper: React.FC<Props> = (props) => {
 
   return (
     <TableProvider>
-      <Card>
+      <Card className="max-w-7xl">
         <CardHeader className="flex justify-between items-center">
           <div className="flex flex-col gap-1">
             <CardTitle>{title}</CardTitle>
             <CardDescription>{subtitle}</CardDescription>
           </div>
 
-          {renderAddButton()}
+          {renderAddButton?.()}
         </CardHeader>
         <CardContent>
           <div className="w-full">

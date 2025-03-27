@@ -14,6 +14,8 @@ interface TableProviderState {
   setIsAddDialogOpen(b: boolean): void;
   isEditDialogOpen: boolean;
   setIsEditDialogOpen(b: boolean): void;
+  isCustomModalOpen: Record<string, boolean>;
+  handleCustomModalOpen(modal: string, value: boolean): void;
 }
 
 const initialState: TableProviderState = {
@@ -25,6 +27,8 @@ const initialState: TableProviderState = {
   setIsAddDialogOpen: () => null,
   isEditDialogOpen: false,
   setIsEditDialogOpen: () => null,
+  isCustomModalOpen: {},
+  handleCustomModalOpen: () => null,
 }
 
 const TableProviderContext = createContext<TableProviderState>(initialState);
@@ -35,6 +39,15 @@ export function TableProvider({ children }: TableProviderProps) {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState<boolean>(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState<boolean>(false);
 
+  const [isCustomModalOpen, setIsCustomModalOpen] = useState<Record<string, boolean>>({});
+
+  function handleCustomModalOpen(modal: string, value: boolean) {
+    setIsCustomModalOpen((prevState) => ({
+      ...prevState,
+      [modal]: value
+    }));
+  }
+
   const value = useMemo(() => ({
     selectedId,
     setSelectedId,
@@ -44,7 +57,9 @@ export function TableProvider({ children }: TableProviderProps) {
     setIsDeleteDialogOpen,
     setIsAddDialogOpen,
     setIsEditDialogOpen,
-  }), [isDeleteDialogOpen, isEditDialogOpen, isAddDialogOpen, selectedId]);
+    isCustomModalOpen,
+    handleCustomModalOpen
+  }), [isDeleteDialogOpen, isEditDialogOpen, isAddDialogOpen, selectedId, isCustomModalOpen]);
 
   return (
     <TableProviderContext.Provider value={value}>

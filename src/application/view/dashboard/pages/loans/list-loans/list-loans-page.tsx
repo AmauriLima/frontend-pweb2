@@ -1,7 +1,13 @@
+import { Table } from "@/application/shared/components/table";
+import { ListLoansContent } from "./list-loans-content";
+
 export const ListLoansPage: React.FC = () => {
   return (
-    <div>
-      <h1>Empréstimos</h1>
-    </div>
+    <Table.Wrapper
+      title="Empréstimos"
+      subtitle="Todos os empréstimos da biblioteca."
+    >
+      <ListLoansContent />
+    </Table.Wrapper>
   );
 }

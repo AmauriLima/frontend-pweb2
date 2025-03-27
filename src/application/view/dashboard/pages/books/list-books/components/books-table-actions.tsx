@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const BooksTableActions: React.FC<Props> = ({ book }) => {
-  const { setIsDeleteDialogOpen, setIsEditDialogOpen, setSelectedId } = useTable();
+  const { setIsDeleteDialogOpen, setIsEditDialogOpen, setSelectedId, handleCustomModalOpen } = useTable();
 
   function handleEdit() {
     setSelectedId(book.id);
@@ -19,6 +19,11 @@ export const BooksTableActions: React.FC<Props> = ({ book }) => {
   function handleDelete() {
     setSelectedId(book.id);
     setIsDeleteDialogOpen(true)
+  }
+
+  function handleLoan() {
+    setSelectedId(book.id);
+    handleCustomModalOpen('loan', true)
   }
 
   return (
@@ -32,7 +37,7 @@ export const BooksTableActions: React.FC<Props> = ({ book }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Ações</DropdownMenuLabel>
-          <DropdownMenuItem variant="default" onClick={() => alert('Direcionar para emprestimo')}>
+          <DropdownMenuItem variant="default" onClick={handleLoan}>
             <LucideBookOpen />
             Emprestar
           </DropdownMenuItem>

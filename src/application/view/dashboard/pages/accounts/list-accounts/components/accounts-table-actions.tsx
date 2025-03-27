@@ -3,6 +3,7 @@ import { Button } from "@/application/shared/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/application/shared/components/ui/dropdown-menu";
 import { useTable } from "@/application/shared/contexts/table-context";
 import { LucideBookOpen, LucideCopy, LucidePencil, LucideTrash2, MoreHorizontal } from "lucide-react";
+import { useNavigate } from "react-router";
 import { toast } from "sonner";
 
 interface Props {
@@ -10,6 +11,8 @@ interface Props {
 }
 
 export const AccountsTableActions: React.FC<Props> = ({ account }) => {
+  const navigate = useNavigate();
+
   const { setIsDeleteDialogOpen, setIsEditDialogOpen, setSelectedId } = useTable();
 
   function handleEdit() {
@@ -43,7 +46,7 @@ export const AccountsTableActions: React.FC<Props> = ({ account }) => {
             Copiar e-mail
           </DropdownMenuItem>
           <DropdownMenuItem
-            onClick={() => alert('Navegar para empréstimos do usuário')}
+            onClick={() => navigate(`/dashboard/loans/${account.id}`)}
           >
             <LucideBookOpen />
             Ver empréstimos

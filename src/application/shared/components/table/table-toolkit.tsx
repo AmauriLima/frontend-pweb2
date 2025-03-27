@@ -7,8 +7,8 @@ import { LucideSettings2 } from "lucide-react";
 interface Props<T> {
   mappedView: Partial<Record<keyof T, string>> & Record<string, string>;
   table: Table<T>;
-  filterPlaceholder: string;
-  filterKey: keyof T extends string ? keyof T : never;
+  filterPlaceholder?: string;
+  filterKey?: keyof T extends string ? keyof T : never;
 }
 
 export function TableToolkit<T>(props: Props<T>) {
@@ -16,21 +16,23 @@ export function TableToolkit<T>(props: Props<T>) {
 
   return (
     <div className="flex items-center py-4 gap-4">
-      <Input
-        placeholder={filterPlaceholder}
-        value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ""}
-        onChange={(event) =>
-          table.getColumn(filterKey)?.setFilterValue(event.target.value)
-        }
-        className="max-w-sm"
-      />
+      {filterKey && (
+        <Input
+          placeholder={filterPlaceholder}
+          value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ""}
+          onChange={(event) =>
+            table.getColumn(filterKey)?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm"
+        />
+      )}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="ml-auto">
-            <LucideSettings2 /> Ver
+            <LucideSettings2 /> Visualizar
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
+        <DropdownMenuContent className="w-full" align="end">
           {table
             .getAllColumns()
             .filter((column) => column.getCanHide())
