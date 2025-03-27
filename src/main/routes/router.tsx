@@ -5,7 +5,7 @@ import { ListAccoutsPage } from '@/application/view/dashboard/pages/accounts/lis
 import { ListBooksPage } from '@/application/view/dashboard/pages/books/list-books/list-books-page';
 import { DashboardLayout } from '@/application/view/dashboard/pages/layout';
 import { ListLoansPage } from '@/application/view/dashboard/pages/loans/list-loans/list-loans-page';
-import { BrowserRouter, Route, Routes } from 'react-router';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import { AuthRoute } from './auth-route';
 import { ProtectedRoute } from './protected-route';
 
@@ -13,7 +13,7 @@ export const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/" element={<Navigate to="/auth/sign-in" />} />
 
         <Route element={<AuthRoute />}>
           <Route path='/auth' element={<AuthLayout />}>
