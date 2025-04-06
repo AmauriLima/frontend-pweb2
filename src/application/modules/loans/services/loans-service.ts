@@ -22,6 +22,15 @@ export class LoansService extends ApiService {
     });
   }
 
+  async getMyLoans(params?: Omit<GetLoansParams, 'accountId'>) {
+    return this.httpClient.get<GetLoansResponse>(`${this.baseUrl}/loans/me`, {
+      params: {
+        page: params?.page ?? 1,
+        perPage: params?.perPage ?? 20,
+      }
+    });
+  }
+
   async createLoan(dto: CreateLoanDTO) {
     return this.httpClient.post<CreateLoanResponse>(this.baseUrl, dto);
   }

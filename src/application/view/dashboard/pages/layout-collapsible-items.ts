@@ -21,7 +21,7 @@ export const collapsibleItems: CollapsibleItem[] = [
     url: '/dashboard/books',
     icon: LucideLibraryBig,
     isActive: true,
-    rolesAllowed: [Roles.ADMIN, Roles.MANAGER, Roles.BOOK_MANAGER, Roles.USER_MANAGER],
+    rolesAllowed: [Roles.ADMIN, Roles.MANAGER, Roles.BOOK_MANAGER, Roles.USER_MANAGER, Roles.USER],
     items: [
       {
         title: 'Todos os livros',
@@ -39,6 +39,20 @@ export const collapsibleItems: CollapsibleItem[] = [
       {
         title: 'Todos os empréstimos',
         url: '/dashboard/loans'
+      }
+    ]
+  },
+  {
+    title: 'Meus empréstimos',
+    url: '/dashboard/my-loans',
+    icon: LucideBookOpen,
+    isActive: true,
+    rolesAllowed: [Roles.USER],
+
+    items: [
+      {
+        title: 'Meus empréstimos',
+        url: '/dashboard/my-loans'
       }
     ]
   }

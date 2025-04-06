@@ -3,8 +3,8 @@ import { AxiosResponse } from "axios";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
 import { Roles } from "../../account/services/dto/account-dto";
-import { SignInDTO, SignInResponse } from "../services/dto/account-dto";
 import { makeAuthService } from "../services/make-auth-service";
+import { SignInDTO, SignInResponse } from "../services/dto/auth-dto";
 
 export function useSignIn() {
   const authService = makeAuthService();
@@ -14,9 +14,9 @@ export function useSignIn() {
     mutationFn: authService.signIn.bind(authService),
     onSuccess: (response) => {
       const { accessToken, role } = response.data;
-      authService.setToken({accessToken, role});
+      authService.setToken({ accessToken, role });
 
-      const entryRoute = role !== Roles.USER ? '/dashboard' : '/books';
+      const entryRoute = '/dashboard';
 
       navigate(entryRoute);
     },

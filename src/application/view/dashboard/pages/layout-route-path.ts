@@ -15,4 +15,8 @@ export const routePath: { [key: string]: { label: string, route?: string } } = {
     label: 'Empréstimos',
     route: '/dashboard/loans'
   },
+  'my-loans': {
+    label: 'Meus Empréstimos',
+    route: '/dashboard/my-loans'
+  },
 };
