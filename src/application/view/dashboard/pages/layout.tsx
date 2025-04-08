@@ -4,23 +4,26 @@ import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/application/sha
 import React, { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router";
 
+import { useMe } from "@/application/modules/account/hooks/use-me";
 import { AppSidebar } from "../components/app-sidebar";
 import { collapsibleItems } from "./layout-collapsible-items";
-import { routePath } from "./layout-route-path";
+import { IRoutePath, routePath } from "./layout-route-path";
 
 export function DashboardLayout() {
   const { pathname } = useLocation();
-  const [breadcrumb, setBreadCrumb] = useState<{label: string, route?: string}[]>([]);
+  const { profile } = useMe();
+  const [breadcrumb, setBreadCrumb] = useState<IRoutePath[]>([]);
 
   useEffect(() => {
     const pathSegments = pathname.split('/').filter(Boolean);
 
-    const mappedBreadcrumb = pathSegments.map((segment) =>
-      routePath[segment] ?? { label: segment }
-    );
+    const mappedBreadcrumb = pathSegments
+      .map((segment) => routePath[segment] ?? { label: segment })
+      .filter(segment => (profile?.roleCode && segment.allowedRoles?.length) ? segment.allowedRoles.includes(profile.roleCode) : true);
 
+      console.log(profile?.roleCode, routePath);
     setBreadCrumb(mappedBreadcrumb);
-  }, [pathname]);
+  }, [pathname, profile]);
 
   return (
     <SidebarProvider>

@@ -8,6 +8,7 @@ import { ListLoansPage } from '@/application/view/dashboard/pages/loans/list-loa
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import { AuthRoute } from './auth-route';
 import { ProtectedRoute } from './protected-route';
+import { MyLoansPage } from '@/application/view/dashboard/pages/loans/list-loans/my-loans-page';
 
 export const Router: React.FC = () => {
   return (
@@ -29,13 +30,16 @@ export const Router: React.FC = () => {
             <Route path="" element={<ListAccoutsPage />} />
           </Route>
 
-          <Route path="books" element={<ProtectedRoute rolesAllowed={[Roles.ADMIN, Roles.MANAGER, Roles.BOOK_MANAGER, Roles.USER_MANAGER]} />}>
+          <Route path="books" element={<ProtectedRoute rolesAllowed={[Roles.ADMIN, Roles.MANAGER, Roles.BOOK_MANAGER, Roles.USER_MANAGER, Roles.USER]} />}>
             <Route path="" element={<ListBooksPage />} />
           </Route>
 
           <Route path="loans" element={<ProtectedRoute rolesAllowed={[Roles.ADMIN, Roles.MANAGER, Roles.USER_MANAGER]} />}>
             <Route path="" element={<ListLoansPage />} />
             <Route path=":accountId" element={<ListLoansPage />} />
+          </Route>
+          <Route path="loans/me" element={<ProtectedRoute rolesAllowed={[Roles.USER]} />}>
+            <Route path="" element={<MyLoansPage />} />
           </Route>
         </Route>
       </Routes>
