@@ -34,11 +34,11 @@ export const Router: React.FC = () => {
             <Route path="" element={<ListBooksPage />} />
           </Route>
 
-          <Route path="loans" element={<ProtectedRoute rolesAllowed={[Roles.ADMIN, Roles.MANAGER, Roles.USER_MANAGER, Roles.USER]} />}>
+          <Route path="loans" element={<ProtectedRoute rolesAllowed={[Roles.ADMIN, Roles.MANAGER, Roles.USER_MANAGER]} />}>
             <Route path="" element={<ListLoansPage />} />
             <Route path=":accountId" element={<ListLoansPage />} />
           </Route>
-          <Route path="my-loans" element={<ProtectedRoute rolesAllowed={[Roles.USER]} />}>
+          <Route path="loans/me" element={<ProtectedRoute rolesAllowed={[Roles.USER]} />}>
             <Route path="" element={<MyLoansPage />} />
           </Route>
         </Route>

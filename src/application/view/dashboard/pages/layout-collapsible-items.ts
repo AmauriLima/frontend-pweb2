@@ -44,7 +44,7 @@ export const collapsibleItems: CollapsibleItem[] = [
   },
   {
     title: 'Meus empréstimos',
-    url: '/dashboard/my-loans',
+    url: '/dashboard/loans/me',
     icon: LucideBookOpen,
     isActive: true,
     rolesAllowed: [Roles.USER],
@@ -52,7 +52,7 @@ export const collapsibleItems: CollapsibleItem[] = [
     items: [
       {
         title: 'Meus empréstimos',
-        url: '/dashboard/my-loans'
+        url: '/dashboard/loans/me'
       }
     ]
   }
