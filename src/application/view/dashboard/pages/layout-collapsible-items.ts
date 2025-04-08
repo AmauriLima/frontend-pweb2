@@ -25,8 +25,8 @@ export const collapsibleItems: CollapsibleItem[] = [
     items: [
       {
         title: 'Todos os livros',
-        url: '/dashboard/books'
-      }
+        url: '/dashboard/books',
+      },
     ]
   },
   {

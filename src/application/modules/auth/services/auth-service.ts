@@ -1,5 +1,6 @@
 import { ApiService } from "@/application/shared/services/api-service";
-import { MeResponse, SignInDTO, SignInResponse } from "./dto/account-dto";
+import { MeResponse } from "../../account/services/dto/account-dto";
+import { SignInDTO, SignInResponse } from "./dto/auth-dto";
 
 export class AuthService extends ApiService {
   private readonly baseUrl: string

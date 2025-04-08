@@ -29,7 +29,7 @@ export const BooksTableActions: React.FC<Props> = ({ book }) => {
   }
 
   return (
-    <div className="flex justify-end">
+    <div className={`flex justify-end`}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="h-8 w-8 p-0">
@@ -39,10 +39,12 @@ export const BooksTableActions: React.FC<Props> = ({ book }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Ações</DropdownMenuLabel>
-          <DropdownMenuItem variant="default" onClick={handleLoan}>
-            <LucideBookOpen />
-            Emprestar
-          </DropdownMenuItem>
+          <ProtectedComponent rolesAllowed={[Roles.ADMIN, Roles.MANAGER, Roles.USER_MANAGER]}>
+            <DropdownMenuItem variant="default" onClick={handleLoan}>
+              <LucideBookOpen />
+              Emprestar
+            </DropdownMenuItem>
+          </ProtectedComponent>
           <ProtectedComponent rolesAllowed={[Roles.ADMIN, Roles.MANAGER, Roles.BOOK_MANAGER]}>
             <DropdownMenuSeparator />
             <DropdownMenuItem variant="default" onClick={handleEdit}>
